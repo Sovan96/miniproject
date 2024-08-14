@@ -26,7 +26,6 @@ app.get('/profile/upload', (req, res) =>{
 });
 
 app.post('/upload', isLoggedIN,upload.single("image"),async (req, res) =>{
-    console.log(user);
   let user=await userModel.findOne({email: req.user.email});
   user.profilepic=req.file.filename;
   await user.save();
